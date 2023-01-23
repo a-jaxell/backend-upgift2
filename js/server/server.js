@@ -35,9 +35,7 @@ const MENU = [
     }
 ];
 
-function mainMenu() {
 
-}
 
 // HEADER NAV 
 app.get("/openingHours", (req, res) => {
@@ -54,13 +52,6 @@ app.get("/ticket-info", (req, res) => {
 app.get("/giftCard", (req, res) => {
     res.render('giftCard');
 });
-
-// app.get('/:name', (res, req) => {
-//     console.log(req.params.name);
-//     const temp = req.params;
-//     console.log(temp);
-//     res.render(temp);
-// });
 
 app.get("/wholeProgramPage", (req, res) => {
     res.render("WholeProgramPage");
@@ -98,13 +89,9 @@ app.get("/upcoming", (req, res) => {
     res.render('upcoming');
 });
 
-
-
-
-
 app.use("/static", express.static("./static"));
 app.use("/js", express.static("./js"));
 app.use("/src", express.static("./src"));
 
 //const PORT = process.env.PORT || 3080;
-app.listen(4000);
+app.listen(5080);
