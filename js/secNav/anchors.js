@@ -5,7 +5,7 @@ export const liveAncs = [];
 export const barBistAncs = [];
 
 //First btn
-const rep1 = ["Hela bioprogrammet", "WholeProgramPage"];
+const rep1 = ["Hela bioprogrammet", " "];
 const rep2 = ["Kommande premiärer", "upcoming"];
 const rep3 = ["Matinéfilm för 100kr", "matine"];
 repAncs.push(rep1, rep2, rep3);
