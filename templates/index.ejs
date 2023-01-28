@@ -1,6 +1,13 @@
     
-    <div class="picture-container"></div>
-
+    <div class="movies-container">
+      
+      <h1 class="movies movies-header">List of movies</h1>
+        <ul class="movies-list">
+          <% movies.forEach(function(movies){ %>
+            <%- include ('partials/movie-card', {movies: movies}) %>
+         <% }) %> 
+        </ul>
+    </div>
     <!--     modal  -->
     <div class="modal-container">
       <div class="cinema-modal"></div>
