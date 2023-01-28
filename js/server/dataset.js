@@ -32,5 +32,6 @@ export const PAGES = [
     'matine',
     'newsletter',
     'premiereFriday',
-    'upcoming'
+    'upcoming',
+    ''
 ]

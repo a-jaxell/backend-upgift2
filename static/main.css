@@ -832,9 +832,37 @@ main {
   align-items: center;
 }
 
+.movies-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.movies-container .movies-backlink {
+  margin: 1em;
+  font-size: 1em;
+  font-family: "Inter", sans-serif;
+}
+.movies-container .movies-header {
+  margin: 1em;
+  font-size: 40px;
+}
+.movies-container .movies-intro {
+  margin-top: 1em;
+  font-size: 2em;
+  width: 300px;
+}
+.movies-container p {
+  max-width: 300px;
+  height: auto;
+  margin: 1em;
+}
+.movies-container p, .movies-container strong {
+  font-size: 25px;
+}
+
 .movies-image {
-  width: 100px;
-  height: 200px;
+  width: 300px;
+  height: auto;
 }
 
 .movies-header {

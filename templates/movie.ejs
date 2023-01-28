@@ -1,5 +1,7 @@
 
-<a href="/">Back to list</a>
-<img class="movies-image" src="<%= movie.image.url %> " alt="The poster of <%= movie.title %>">
-<h2 class="movies-header"><%= movie.title %></h2>
-<p class="movies-intro"><%- movieIntro %></p>
+<div class="movies-container">
+    <a class="movies-backlink" href="/">Back to list</a>
+    <h2 class="movies-header"><%= movie.title %></h2>
+    <img class="movies-image" src="<%= movie.image.url %> " alt="The poster of <%= movie.title %>">
+    <%- movieIntro %>
+</div>
