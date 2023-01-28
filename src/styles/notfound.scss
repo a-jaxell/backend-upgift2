@@ -1,0 +1,17 @@
+.notfound{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 3em;
+    font-family: $font-family;
+    
+    &.notfound-header{
+        color:$blue-color;
+        font-size: 4em;
+        margin: 1em;
+    }
+    &.notfound-paragraph{
+        font-size: 2em;
+    }
+}
