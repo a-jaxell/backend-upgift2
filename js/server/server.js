@@ -1,97 +1,67 @@
 import express from "express";
-import { engine } from "express-handlebars";
+import expressLayouts from'express-ejs-layouts';
+import markdown from 'markdown-it';
 
+import { apiHandler, url } from "../api-handler.js";
+import { PAGES } from "./dataset.js";
 
 const app = express();
-app.engine("handlebars", engine());
-app.set("view engine", "handlebars");
-app.set("views", "./templates");
-
-app.get("/", (req, res) => {
-  res.render("index");
-});
-// /LuleNorthernLightsCinema/pages/wholeProgramPage.html
-
-const MENU = [
-    {
-        label: 'Öppetider & Kontakt',
-        link: '/openingHours',
-    },
-    {
-        label: 'Om våran biograf',
-        link: '/about',
-    },
-    {
-        label: 'Biljettinfo',
-        link: '/ticket-info',
-    },
-    {
-        label: 'Nyheter',
-        link: '/newsletter',
-    },
-    {
-        label: 'Köp Presentkort',
-        link: '/giftCard',
-    }
-];
-
-
-
-// HEADER NAV 
-app.get("/openingHours", (req, res) => {
-    res.render("openingHours");
-});
-app.get("/about", (req, res) =>{
-    res.render("about");
-});
-
-app.get("/ticket-info", (req, res) => {
-    res.render('ticket-info');
-});
-
-app.get("/giftCard", (req, res) => {
-    res.render('giftCard');
-});
-
-app.get("/wholeProgramPage", (req, res) => {
-    res.render("WholeProgramPage");
-});
- 
-app.get("/bistro-menu", (req, res) => {
-    res.render('bistro-menu');
-});
-
-app.get("/giftCard", (req, res) => {
-    res.render('giftCard');
-});
-
-app.get("/booking", (req, res) => {
-    res.render('booking');
-});
-
-app.get("/matine", (req, res) => {
-    res.render('matine');
-});
-
-app.get("/newsLetter", (req, res) => {
-    res.render('newsLetter');
-});
-
-app.get("/ticket-info", (req, res) => {
-    res.render('ticket-info');
-});
-
-app.get("/premiereFriday", (req, res) => {
-    res.render('premiereFriday');
-});
-
-app.get("/upcoming", (req, res) => {
-    res.render('upcoming');
-});
+const md = new markdown();
 
 app.use("/static", express.static("./static"));
 app.use("/js", express.static("./js"));
 app.use("/src", express.static("./src"));
 
-//const PORT = process.env.PORT || 3080;
+app.use(expressLayouts);
+
+app.set('layout', './layout/main');
+app.set("view engine", "ejs");
+app.set("views", "./templates");
+
+// Ladda data från API, bygg html och skicka som svar
+
+app.get("/", async (req, res) => {
+    // movies.data  []
+    const data = await apiHandler(url);
+    const movies = data.data.map(element => {
+        return {
+            id : element.id,
+            ... element.attributes,
+        }
+    });
+    
+    if(movies){
+        res.render('index', { movies } );
+    } else {
+        res.status(404).render('404');
+    }
+});
+
+app.get("/movies/:id", async (req, res) => {
+
+    const data = await apiHandler(url, req.params.id);
+    const movie = { id: data.data.id,
+                ...data.data.attributes,
+            }
+
+            const movieIntro = md.render(movie.intro);
+
+    if(movie){
+        res.render('movie', {movie,movieIntro });
+    } else {
+        res.status(404).render('404');
+    }
+});
+
+// Handles requests that have a match on the PAGES array.
+// else it returns a 404 template. 
+
+app.get('/:path', (req, res) => {
+
+    if(PAGES.includes(req.params.path)){
+        res.render(`${req.params.path}`)
+    } else {
+        res.status(404).render('404');
+    }
+});
 app.listen(5080);
