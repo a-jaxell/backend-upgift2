@@ -1,0 +1,35 @@
+.movies{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.movies-image{
+    width: 100px;
+    height: 200px;
+}
+
+.movies-header{
+    margin-top: 1em;
+    font-size: 2.5rem;
+    font-family: $font-family;
+    color: black;
+}
+.movies-list{
+    margin: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin: 2em;
+    list-style: none;
+
+}
+.movies-anchor{
+    width: 100px;
+    color: $blue-color;
+    font-size: 20px;
+    font-family: $font-family;
+}
+
+.movies-container{
+    min-height: 50vh;
+}

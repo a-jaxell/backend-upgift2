@@ -826,3 +826,56 @@ main {
     max-width: 1000px;
   }
 }
+.movies {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.movies-image {
+  width: 100px;
+  height: 200px;
+}
+
+.movies-header {
+  margin-top: 1em;
+  font-size: 2.5rem;
+  font-family: "Inter", sans-serif;
+  color: black;
+}
+
+.movies-list {
+  margin: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin: 2em;
+  list-style: none;
+}
+
+.movies-anchor {
+  width: 100px;
+  color: #112d4e;
+  font-size: 20px;
+  font-family: "Inter", sans-serif;
+}
+
+.movies-container {
+  min-height: 50vh;
+}
+
+.notfound {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 3em;
+  font-family: "Inter", sans-serif;
+}
+.notfound.notfound-header {
+  color: #112d4e;
+  font-size: 4em;
+  margin: 1em;
+}
+.notfound.notfound-paragraph {
+  font-size: 2em;
+}
