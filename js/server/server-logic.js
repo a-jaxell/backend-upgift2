@@ -9,8 +9,6 @@ const app = express();
 const md = new markdown();
 
 app.use("/static", express.static("./static"));
-app.use("/js", express.static("./js"));
-app.use("/src", express.static("./src"));
 
 app.use(expressLayouts);
 
